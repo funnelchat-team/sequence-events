@@ -79,15 +79,12 @@
                   Time
                 </label>
               </div>
-              <div class="md:w-2/3">
-                <div>
-                  <flat-pickr v-model="selected_time"></flat-pickr>
-                </div>
-                <!-- <input
+              <div class="md:w-2/3">                
+                <input
                   v-model="selected_time"
                   type="time"
                   class="w-full form-control form-input form-input-bordered"
-                /> -->
+                />
               </div>
             </div>
           </div>
