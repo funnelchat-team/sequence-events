@@ -25,7 +25,7 @@
                   class="inline-block text-80 pt-2 leading-tight"
                   for="inline-full-name"
                 >
-                  Duration 
+                  Duration
                 </label>
               </div>
               <div class="md:w-2/3">
@@ -80,11 +80,14 @@
                 </label>
               </div>
               <div class="md:w-2/3">
-                <input
+                <div>
+                  <flat-pickr v-model="selected_time"></flat-pickr>
+                </div>
+                <!-- <input
                   v-model="selected_time"
                   type="time"
                   class="w-full form-control form-input form-input-bordered"
-                />
+                /> -->
               </div>
             </div>
           </div>
@@ -97,11 +100,13 @@
 <script>
 import { FormField, HandlesValidationErrors } from "laravel-nova";
 import Multiselect from "vue-multiselect";
+import flatPickr from "vue-flatpickr-component";
+import "flatpickr/dist/flatpickr.css";
 
 export default {
   mixins: [FormField, HandlesValidationErrors],
 
-  components: { Multiselect },
+  components: { Multiselect, flatPickr },
 
   data() {
     return {
@@ -128,28 +133,28 @@ export default {
   props: ["resourceName", "resourceId", "field"],
 
   watch: {
-    selected_day_is: function (newDay, oldDay) {
+    selected_day_is: function(newDay, oldDay) {
       this.value = JSON.stringify({
         type_selected: this.type_selected,
         selected_day_is: newDay,
         selected_time: "00:00",
       });
     },
-    selected_time: function (newTime, oldTime) {
+    selected_time: function(newTime, oldTime) {
       this.value = JSON.stringify({
         type_selected: this.type_selected,
         selected_day_is: this.selected_day_is,
         selected_time: newTime,
       });
     },
-    selected_duration_type: function (newHour, oldHour) {
+    selected_duration_type: function(newHour, oldHour) {
       this.value = JSON.stringify({
         type_selected: this.type_selected,
         selected_duration_type: newHour,
         selected_cant: 1,
       });
     },
-    selected_cant: function (newCant, oldCant) {
+    selected_cant: function(newCant, oldCant) {
       this.value = JSON.stringify({
         type_selected: this.type_selected,
         selected_duration_type: this.selected_duration_type,
