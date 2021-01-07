@@ -136,6 +136,7 @@ export default {
             resolved_options: Intl.DateTimeFormat().resolvedOptions()
         };
     },
+    
     props: ["resourceName", "resourceId", "field"],
 
     watch: {
